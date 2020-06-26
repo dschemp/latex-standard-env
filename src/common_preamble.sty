@@ -1,0 +1,74 @@
+% Standard packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{empheq}
+\usepackage{xcolor}
+\usepackage[ngerman]{babel}
+\usepackage{float}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+% Checklist
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+% Font
+\usepackage{mathastext}
+\usepackage{unicode-math}
+
+\usepackage{fontspec}
+\setmainfont[
+    Ligatures=TeX,
+    UprightFont=*,
+    ItalicFont=* Italic,
+    BoldFont=* Bold,
+    BoldItalicFont=* Bold Italic
+]{STIX Two Text}
+
+\setsansfont[
+    Ligatures=TeX,
+    UprightFont=*,
+    ItalicFont=* Italic,
+    BoldFont=* Bold,
+    BoldItalicFont=* Bold Italic
+]{STIX Two Text}
+
+\setmathfont[
+    Ligatures=TeX
+]{STIX Two Math}
+
+% Tables
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+% Header & Footer
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[R]{\leftmark}
+    \fancyfoot[R]{\thepage}
+    \fancyfoot[L]{\rightmark}
+    
+    \renewcommand{\headrulewidth}{.5pt}
+    \renewcommand{\footrulewidth}{.5pt}
+}
+\pagestyle{plain}
+
+\setlength{\parindent}{0cm}
