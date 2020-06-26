@@ -1,0 +1,3 @@
+[submodule "fonts/stix2"]
+	path = fonts/stix2
+	url = https://github.com/stipub/stixfonts.git
