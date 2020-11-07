@@ -16,3 +16,4 @@ Modifications
 
 - renaming from hsrm into anno to reflect changes
 - background.pdf and logo.eps are optional (front page)
+- "noflama" option now uses the (free) Barlow font (see ../fonts/barlow)

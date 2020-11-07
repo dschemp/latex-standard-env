@@ -4,3 +4,6 @@
 [submodule "tex-beamer/original"]
 	path = tex-beamer/original
 	url = https://github.com/benjamin-weiss/hsrmbeamertheme.git
+[submodule "fonts/barlow"]
+	path = fonts/barlow
+	url = https://github.com/jpt/barlow.git
