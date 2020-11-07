@@ -1,4 +1,5 @@
 # All needed and used fonts if not through CTAN packages
 
 ### Currently used:
-- STIX Two Text + Math
+- STIX Two Text + Math (tex-document)
+- Barlow ("optional", tex-beamer)
