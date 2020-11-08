@@ -12,6 +12,16 @@
 \usepackage{tabularx,ragged2e,booktabs}
 \usepackage{multicol}
 \usepackage{listings}
+
+\usepackage{csquotes}
+\MakeOuterQuote{"} % german style quotes
+
+%--------------------------------------------------------------------------
+% Config / Settings file
+%--------------------------------------------------------------------------
+\input{config.sty}
+\graphicspath{ {./imgs/} } % Autocomplete
+
 \lstset{ %
 	language=[LaTeX]TeX,
 	basicstyle=\fontsize{9}{12}\ttfamily,
@@ -31,15 +41,8 @@
 	xleftmargin=0.5em,
 	xrightmargin=0.5em
 }
-
-\usepackage{csquotes}
-\MakeOuterQuote{"} % german style quotes
-
-%--------------------------------------------------------------------------
-% Config / Settings file
-%--------------------------------------------------------------------------
-\input{config.sty}
-\graphicspath{ {./imgs/} } % Autocomplete
+% Can be "transparent" (grayed out) or "invisible"
+\setbeamercovered{transparent}
 
 %--------------------------------------------------------------------------
 % Colors for graphics visualization
