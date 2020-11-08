@@ -1,0 +1,553 @@
+%!TEX spellcheck = de_DE
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass{beamer}
+
+%--------------------------------------------------------------------------
+% Common packages
+%--------------------------------------------------------------------------
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{tabularx,ragged2e,booktabs}
+\usepackage{multicol}
+\usepackage{listings}
+\lstset{ %
+	language=[LaTeX]TeX,
+	basicstyle=\fontsize{9}{12}\ttfamily,
+	keywordstyle=,
+	numbers=left,
+	numberstyle=\scriptsize\ttfamily,
+	stepnumber=1,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	breaklines=true,
+	frame=tb,
+	framerule=0.5pt,
+	tabsize=4,
+	framexleftmargin=0.5em,
+	framexrightmargin=0.5em,
+	xleftmargin=0.5em,
+	xrightmargin=0.5em
+}
+
+\usepackage{csquotes}
+\MakeOuterQuote{"} % german style quotes
+
+%--------------------------------------------------------------------------
+% For showcase purposes
+%--------------------------------------------------------------------------
+\usepackage{blindtext}
+\usepackage{lipsum}
+
+%--------------------------------------------------------------------------
+% Config / Settings file
+%--------------------------------------------------------------------------
+\input{config.sty}
+\graphicspath{ {./imgs/} } % Autocomplete
+
+%--------------------------------------------------------------------------
+% Colors for graphics visualization
+% https://learnui.design/tools/data-color-picker.html
+%--------------------------------------------------------------------------
+
+\begin{document}
+%--------------------------------------------------------------------------
+% Titlepage
+%--------------------------------------------------------------------------
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+%--------------------------------------------------------------------------
+% Table of contents
+%--------------------------------------------------------------------------
+\section*{Table Of Contents}
+\begin{frame}
+	\frametitle{Table Of Contents}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+%--------------------------------------------------------------------------
+% Content
+%--------------------------------------------------------------------------
+
+\section{Getting started}
+\begin{frame}[containsverbatim]
+	\frametitle{Basic Structure}
+	The basic structure is simple (see config.sty):
+	\begin{lstlisting}
+\documentclass[compress]{beamer}
+% Load theme
+\usetheme{anno}
+% General settings 
+\title{Title of the presentation}
+\subtitle{Subtitle of the presentaiton}
+\author{Your Name}
+\institute{Faculty\\University {\Medium Lorem}}
+\begin{document}
+% Frames
+\end{document}
+	\end{lstlisting}
+\end{frame}
+
+\section{Presentation Structure}
+\begin{frame}[containsverbatim]
+	\frametitle{Structuring}
+	Structuring in Beamer is like in \LaTeX\ possible via \lstinline!section!, \lstinline!subsection!, and so on.
+	For slides there is the \lstinline!frame! environment defined.
+	
+	Slide titles can be passed directly to the \lstinline!frame! environment or
+	via \lstinline!\frametitle{Title}! inside the environment.
+	\begin{lstlisting}
+\section{My section}
+\subsection{My subsection}
+\begin{frame}
+	\frametitle{Slide title}
+	% Slide content
+\end{frame}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+	\frametitle{Title Page and ToC}
+	You can generate the title page with: 
+	\begin{lstlisting}
+\maketitle
+	\end{lstlisting}
+	and the Table of Contents via
+	\begin{lstlisting}
+\begin{frame}{Table of Contents}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+	\end{lstlisting}
+	The option \lstinline!hideallsubsections! is great for longer presentations to keep the ToC compact.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Adding background and logo to Title Page}
+	To add a background and logo to your Beamer presentation
+	you will need to put
+	\begin{itemize}
+		\item \texttt{background.pdf}\\(4:3 ratio)
+		\item \texttt{logo.eps}\\(preferably vertical)
+	\end{itemize}
+	in the same folder as your \texttt{document.tex}.
+
+	Logo and background are \textbf{optional}. \alert{The background will be overlayed on top of the title page!}
+\end{frame}
+
+\section{Theming}
+\begin{frame}
+	\frametitle{Theming options}
+	To change the presentation design you can change the following options.
+	\begin{table}[]
+		\begin{tabularx}{\linewidth}{l>{\raggedright}X}
+			\toprule
+			\textbf{Option}			& \textbf{Result} \tabularnewline
+			\midrule
+			\texttt{noserifmath}	& Formulas use a sans-serif font. \tabularnewline \tabularnewline
+			\texttt{nosectionpages} & Disables section pages. \tabularnewline
+			\bottomrule
+		\end{tabularx}
+		\label{tab:options}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Primary colors}									
+	All colors are already implemented in the template.
+	\begin{multicols}{2}
+		\setbeamercolor{annoRedDemo}{fg=annoRed,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoRedDemo}
+			\texttt{annoRed}
+		\end{beamercolorbox}
+		\setbeamercolor{annoRedDarkDemo}{fg=annoRedDark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoRedDarkDemo}
+			\texttt{annoRedDark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoWarmGreyDarkDemo}{fg=annoWarmGreyDark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoWarmGreyDarkDemo}
+			\texttt{annoWarmGreyDark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoWarmGreyLightDemo}{fg=annoWarmGreyLight,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoWarmGreyLightDemo}
+			\texttt{annoWarmGreyLight}
+		\end{beamercolorbox}
+		
+		\setbeamercolor{annoRedDemoBg}{fg=white,bg=annoRed}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoRedDemoBg}
+			\texttt{annoRed}
+		\end{beamercolorbox}
+		\setbeamercolor{annoRedDarkDemoBg}{fg=white,bg=annoRedDark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoRedDarkDemoBg}
+			\texttt{annoRedDark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoWarmGreyDarkDemo}{fg=white,bg=annoWarmGreyDark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoWarmGreyDarkDemo}
+			\texttt{annoWarmGreyDark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoWarmGreyLightDemo}{fg=white,bg=annoWarmGreyLight}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoWarmGreyLightDemo}
+			\texttt{annoWarmGreyLight}
+		\end{beamercolorbox}
+	\end{multicols}	
+\end{frame}
+	
+\begin{frame}
+	\frametitle{Secondary colors}
+	\begin{multicols}{2}
+		\setbeamercolor{annoSec1Demo}{fg=annoSec1,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec1Demo}
+			\texttt{annoSec1}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec1DarkDemo}{fg=annoSec1Dark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec1DarkDemo}
+			\texttt{annoSec1Dark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec1CompDemo}{fg=annoSec1Comp,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec1CompDemo}
+			\texttt{annoSec1Comp}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec1CompDarkDemo}{fg=annoSec1CompDark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec1CompDarkDemo}
+			\texttt{annoSec1CompDark}
+		\end{beamercolorbox}
+		
+		\setbeamercolor{annoSec2Demo}{fg=annoSec2,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec2Demo}
+			\texttt{annoSec2}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec2DarkDemo}{fg=annoSec2Dark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec2DarkDemo}
+			\texttt{annoSec2Dark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec2CompDemo}{fg=annoSec2Comp,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec2CompDemo}
+			\texttt{annoSec2Comp}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec2CompDarkDemo}{fg=annoSec2CompDark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec2CompDarkDemo}
+			\texttt{annoSec2CompDark}
+		\end{beamercolorbox}
+		
+		\setbeamercolor{annoSec3Demo}{fg=annoSec3,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec3Demo}
+			\texttt{annoSec3}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec3DarkDemo}{fg=annoSec3Dark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec3DarkDemo}
+			\texttt{annoSec3Dark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec3CompDemo}{fg=annoSec3Comp,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec3CompDemo}
+			\texttt{annoSec3Comp}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec3CompDarkDemo}{fg=annoSec3CompDark,bg=white}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,dp=0.7ex]{annoSec3CompDarkDemo}
+			\texttt{annoSec3CompDark}
+		\end{beamercolorbox}
+		
+		\setbeamercolor{annoSec1DemoBg}{fg=white,bg=annoSec1}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec1DemoBg}
+			\texttt{annoSec1}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec1DarkDemoBg}{fg=white,bg=annoSec1Dark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec1DarkDemoBg}
+			\texttt{annoSec1Dark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec1CompDemoBg}{fg=white,bg=annoSec1Comp}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec1CompDemoBg}
+			\texttt{annoSec1Comp}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec1CompDarkDemoBg}{fg=white,bg=annoSec1CompDark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec1CompDarkDemoBg}
+			\texttt{annoSec1CompDark}
+		\end{beamercolorbox}
+		
+		\setbeamercolor{annoSec2DemoBg}{fg=white,bg=annoSec2}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec2DemoBg}
+			\texttt{annoSec2}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec2DarkDemoBg}{fg=white,bg=annoSec2Dark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec2DarkDemoBg}
+			\texttt{annoSec2Dark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec2CompDemoBg}{fg=white,bg=annoSec2Comp}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec2CompDemoBg}
+			\texttt{annoSec2Comp}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec2CompDarkDemoBg}{fg=white,bg=annoSec2CompDark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec2CompDarkDemoBg}
+			\texttt{annoSec2CompDark}
+		\end{beamercolorbox}
+		
+		\setbeamercolor{annoSec3Demo}{fg=white,bg=annoSec3}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec3Demo}
+			\texttt{annoSec3}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec3DarkDemo}{fg=white,bg=annoSec3Dark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec3DarkDemo}
+			\texttt{annoSec3Dark}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec3CompDemo}{fg=white,bg=annoSec3Comp}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec3CompDemo}
+			\texttt{annoSec3Comp}
+		\end{beamercolorbox}
+		\setbeamercolor{annoSec3CompDarkDemo}{fg=white,bg=annoSec3CompDark}
+		\begin{beamercolorbox}[wd=\linewidth,ht=2ex,leftskip=.5ex,dp=0.7ex]{annoSec3CompDarkDemo}
+			\texttt{annoSec3CompDark}
+		\end{beamercolorbox}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+	\frametitle{Highlighting}
+	In the Beamer class is a function defined called \lstinline!\alert! to highlight certain phrases.
+	\begin{itemize}
+		\item \alert{hervorgehobener Text}
+	\end{itemize}
+	Additionally, there are \lstinline!\quoted! and \lstinline!\doublequoted! defined to use
+	French style quotations.
+	\begin{itemize}
+		\item[] \quoted{Simple quotation marks}
+		\item[] \doublequoted{Double quotation marks}
+	\end{itemize}
+\end{frame}
+
+\section{Lists}
+
+\begin{frame}
+	\frametitle{Itemization}
+	\blindlistlist[3]{itemize}[3]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Enumerations}
+	\blindlistlist[3]{enumerate}[3]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Descriptions}
+	\blinddescription
+\end{frame}
+
+\section{Text}
+\begin{frame}
+	\frametitle{One Sentence Text}
+	\lipsum*[1-1][1-1]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Multiple paragraph Text}
+	\lipsum*[1-1][1-3]
+
+	\lipsum*[2-2][1-3]
+
+	\lipsum*[3-3][1-3]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Long Text}
+	\blindtext
+\end{frame}
+
+\section{Blocks}
+\begin{frame}[containsverbatim]
+	\frametitle{Simple Block with enumeration}
+	\begin{block}{Block with enumeration}
+		\begin{itemize}
+			\item Punkt 1
+			\item Punkt 2
+		\end{itemize}
+	\end{block}
+	\begin{lstlisting}
+\begin{block}{Block with enumeration}
+	\begin{itemize}
+		\item Punkt 1
+		\item Punkt 2
+	\end{itemize}
+\end{block}
+	\end{lstlisting}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+	\frametitle{Alert Block}
+	\begin{alertblock}{Alert Block}
+		An Alert Block will be colored in with the first primary color.
+	\end{alertblock}
+	\begin{lstlisting}
+\begin{alertblock}{Alert Block}
+	An Alert Block will be colored in with the first primary color.
+\end{alertblock}
+	\end{lstlisting}
+\end{frame}
+	
+\begin{frame}[containsverbatim]
+	\frametitle{Example Block}
+	\begin{exampleblock}{Example Block}
+		An Alert Block will be colored in with the first secondary color.
+	\end{exampleblock}
+	\begin{lstlisting}
+\begin{exampleblock}{Example Block}
+	An Alert Block will be colored in with the first secondary color.
+\end{exampleblock}
+	\end{lstlisting}
+\end{frame}
+	
+\begin{frame}[containsverbatim]
+	\frametitle{Blocks in other colors}
+	\begingroup
+	\setbeamercolor{block title}{bg=annoSec2Dark}
+	\setbeamercolor{block body}{bg=annoSec2}
+	\begin{block}{Block mit anderer Farbe}
+		This block is colored in an other secondary color.
+	\end{block}
+	\setbeamercolor{block title}{bg=annoSec3Dark}
+	\setbeamercolor{block body}{bg=annoSec3,fg=white}
+	\begin{block}{Block mit anderer Farbe}
+		This block is colored in an other secondary color.
+	\end{block}
+	\endgroup
+\end{frame}
+
+\begin{frame}[containsverbatim]
+	\frametitle{Blocks in other colors}
+	\begin{lstlisting}
+\begingroup
+\setbeamercolor{block title}{bg=annoSec2Dark}
+\setbeamercolor{block body}{bg=annoSec2}
+\begin{block}{Block mit anderer Farbe}
+	This block is colored in an other secondary color.
+\end{block}
+
+\setbeamercolor{block title}{bg=annoSec3Dark}
+\setbeamercolor{block body}{bg=annoSec3,fg=white}
+\begin{block}{Block mit anderer Farbe}
+	This block is colored in an other secondary color.
+\end{block}
+\endgroup
+	\end{lstlisting}
+\end{frame}
+
+\section{Figures}
+\begin{frame}
+	\frametitle{Picture}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=4cm]{example-image-a}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Picture with Copyright caption}
+
+	\begin{figure}
+		\centering
+		\includegraphicscopyright[scale=.7]{example-image-golden}{Copyrighted by some1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Table}
+	\begin{table}[]
+		\caption{Selection of window function and their properties}
+		\begin{tabular}[]{lrrr}
+			\toprule
+			\textbf{Window} & \multicolumn{1}{c}{\textbf{First side lobe}}	
+			& \multicolumn{1}{c}{\textbf{3\,dB bandwidth}}
+			& \multicolumn{1}{c}{\textbf{Roll-off}} \\
+			\midrule
+			Rectangular		& 13.2\,dB & 0.886\,Hz/bin	&  6\,dB/oct \\[0.25em]
+			Triangular		& 26.4\,dB & 1.276\,Hz/bin	& 12\,dB/oct \\[0.25em]
+			Hann			& 31.0\,dB & 1.442\,Hz/bin	& 18\,dB/oct \\[0.25em]
+			Hamming			& 41.0\,dB & 1.300\,Hz/bin	&  6\,dB/oct \\
+			\bottomrule
+		\end{tabular}
+		\label{tab:WindowFunctions}
+	\end{table}
+\end{frame}
+
+\begin{frame}{Formulas}
+	\begin{block}{Fourier transform}
+		\begin{equation*}
+		F(\textrm{j}\omega) = \int\limits_{-\infty}^{\infty} f(t)\cdot\textrm{e}^{-\textrm{j}\omega t} dt
+		\end{equation*}
+	\end{block}
+	\begin{block}{Factorial}
+		\begin{equation*}
+			n! = 1\cdot 2 \cdot 3 \cdot\ldots\cdot n = \prod_{k=1}^n k
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Footnote}
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem \footnote{Lorem ipsum dolor sit amet} ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Slide with notes}
+    Für das Publikum ist diese Folie.
+
+	Für ihre Präsentation bieten sich folgende Programme an:
+	\begin{itemize}
+		\item Splitshow (Mac OS X)\\\url{https://code.google.com/p/splitshow/}
+		\item pdf-presenter (Windows)\\\url{https://code.google.com/p/pdf-presenter/}
+	\end{itemize}
+\end{frame}
+
+\note{
+    Für Ihre Notizen zum Vortrag vewenden Sie diese Folie.
+    
+	Für ihre Präsentation bieten sich folgende Programme an:
+	\begin{itemize}
+		\item Splitshow (Mac OS X)\\\url{https://code.google.com/p/splitshow/}
+		\item pdf-presenter (Windows)\\\url{https://code.google.com/p/pdf-presenter/}
+	\end{itemize} 
+}
+
+\begin{frame}
+	\frametitle{Two Columns}
+	\begin{multicols}{2}
+		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		\begin{itemize}
+        	\item ein Eintrag
+        	\item noch ein Eintrag
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Column Break}
+	\begin{multicols}{2}
+		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+		\columnbreak
+		\begin{itemize}
+        	\item ein Eintrag
+        	\item noch ein Eintrag
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bibliography / References}
+	\begin{thebibliography}{10}
+    
+	\beamertemplatebookbibitems
+	\bibitem{Oppenheim2009}
+	Alan~V.~Oppenheim
+	\newblock \doublequoted{Discrete-Time Signal Processing}
+	\newblock Prentice Hall Press, 2009
+
+	\beamertemplatearticlebibitems
+	\bibitem{EBU2011}
+	European~Broadcasting~Union
+	\newblock \doublequoted{Specification of the Broadcast Wave Format (BWF)}
+	\newblock 2011
+  \end{thebibliography}
+\end{frame}
+
+\end{document}

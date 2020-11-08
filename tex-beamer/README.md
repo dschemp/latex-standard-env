@@ -16,4 +16,9 @@ Modifications
 
 - renaming from hsrm into anno to reflect changes
 - background.pdf and logo.eps are optional (front page)
-- "noflama" option now uses the (free) Barlow font (see ../fonts/barlow)
+- Beamer does not use Flama font anymore but Barlow instead
+- more font weight options
+- section pages and frame titles are not capitalized anymore and use medium font weight
+- captions use half an em space as seperator between label and text
+- new icons for 1st, 2nd and 3rd level itemization
+- figure are now numbered

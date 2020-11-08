@@ -9,7 +9,28 @@
 %--------------------------------------------------------------------------
 \usepackage[ngerman]{babel}
 \usepackage{graphicx}
-\usepackage{microtype}
+\usepackage{tabularx,ragged2e,booktabs}
+\usepackage{multicol}
+\usepackage{listings}
+\lstset{ %
+	language=[LaTeX]TeX,
+	basicstyle=\fontsize{9}{12}\ttfamily,
+	keywordstyle=,
+	numbers=left,
+	numberstyle=\scriptsize\ttfamily,
+	stepnumber=1,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	breaklines=true,
+	frame=tb,
+	framerule=0.5pt,
+	tabsize=4,
+	framexleftmargin=0.5em,
+	framexrightmargin=0.5em,
+	xleftmargin=0.5em,
+	xrightmargin=0.5em
+}
 
 \usepackage{csquotes}
 \MakeOuterQuote{"} % german style quotes
@@ -45,23 +66,24 @@
 %--------------------------------------------------------------------------
 % Content
 %--------------------------------------------------------------------------
-\section{First Section}
 
-\begin{frame}{First page}
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-\end{frame}
-
-\begin{frame}{Second page}
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-\end{frame}
-
-\section{Second Section}
-\begin{frame}{Third page}
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-\end{frame}
-
-\begin{frame}{Fourth page}
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem  ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\section{Getting started}
+\begin{frame}[containsverbatim]
+	\frametitle{Basic Structure}
+	The basic structure is simple (see config.sty):
+	\begin{lstlisting}
+\documentclass[compress]{beamer}
+% Load theme
+\usetheme{anno}
+% General settings 
+\title{Title of the presentation}
+\subtitle{Subtitle of the presentaiton}
+\author{Your Name}
+\institute{Faculty\\University {\Medium Lorem}}
+\begin{document}
+% Frames
+\end{document}
+	\end{lstlisting}
 \end{frame}
 
 \end{document}

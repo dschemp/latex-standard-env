@@ -2,4 +2,4 @@
 
 ### Currently used:
 - STIX Two Text + Math (tex-document)
-- Barlow ("optional", tex-beamer)
+- Barlow (tex-beamer)

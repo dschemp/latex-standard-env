@@ -1,13 +1,11 @@
-\ProvidesPackage{beamerthemeanno}[2020/10/04]
+\ProvidesPackage{beamerthemeanno}[2020/11/08]
 
 \usepackage{eso-pic}
+\usepackage{microtype}
 
 \newif\if@doSans
 \@doSansfalse
 \DeclareOption{noserifmath}{\@doSanstrue}
-\newif\if@doNoFlama
-\@doNoFlamafalse
-\DeclareOption{noflama}{\@doNoFlamatrue}
 \newif\if@doSectionPage
 \@doSectionPagefalse
 \DeclareOption{nosectionpages}{\@doSectionPagetrue}
@@ -25,18 +23,11 @@
 %---------------------------------------------------------------------
 % custom commands
 %---------------------------------------------------------------------
-\newcommand{\rightTextArrow}{→}
+\newcommand{\rightTextArrow}{$\blacktriangleright$}
+\newcommand{\rightTextArrowTwo}{$\diamond$}
+\newcommand{\rightTextArrowThree}{$\star$}
 \newcommand{\quoted}[1]{›#1‹}
 \newcommand{\doublequoted}[1]{»#1«}
-
-%---------------------------------------------------------------------
-% Itemize
-%---------------------------------------------------------------------
-\setbeamertemplate{itemize item}{\rightTextArrow}
-\setbeamertemplate{itemize subitem}{\rightTextArrow}
-\setbeamertemplate{itemize subsubitem}{\rightTextArrow}
-
-\setlength{\parskip}{0.5em}
 
 %---------------------------------------------------------------------
 % Colors
@@ -101,35 +92,23 @@
 % General
 
 % Declare fontfamilys
-\if@doNoFlama%
-	% Sans serif math option
-	\if@doSans%
-		% sans serif math %
-		\usepackage[no-math]{fontspec}%	
-		\setmainfont{Barlow}%
-	\else%
-		% serif math %
-		\usepackage{fontspec}%	
-		\usefonttheme[onlymath]{serif}%
-	\fi%
-	\newfontfamily\Light{Barlow Light}%
-	\newfontfamily\Book{Barlow Bold}%
-	\newfontfamily\Medium{Barlow Bold}%
-	\setsansfont{Barlow}%
+% Sans serif math option
+\if@doSans%
+    % sans serif math %
+    \usepackage[no-math]{fontspec}%
+    \setmainfont{Barlow}%
 \else%
-	% Sans serif math option
-	\if@doSans%
-		\usepackage[no-math]{fontspec}%	
-		\setmainfont{Flama-Light}%
-	\else%
-		\usepackage{fontspec}%	
-		\usefonttheme[onlymath]{serif}%
-	\fi%
-	\newfontfamily\Light{Flama-Light}%
-	\newfontfamily\Book{Flama-Book}%
-	\newfontfamily\Medium{Flama-Medium}%
-	\setsansfont{Flama-Light}%
+    % serif math %
+    \usepackage{fontspec}%
+    \usefonttheme[onlymath]{serif}%
 \fi%
+\newfontfamily\Light{Barlow Light}%
+\newfontfamily\Regular{Barlow Regular}%
+\newfontfamily\Medium{Barlow Medium}%
+\newfontfamily\SemiBold{Barlow SemiBold}%
+\newfontfamily\Bold{Barlow Bold}%
+\newfontfamily\Book{Barlow Bold}%
+\setsansfont{Barlow}%
 
 \renewcommand\UrlFont{\Medium}
 % Titlepage
@@ -139,12 +118,12 @@
 \setbeamerfont{author}{size=\fontsize{12}{15}}
 \setbeamerfont{institute}{size=\fontsize{8}{10}}
 % Section
-\setbeamerfont{section title}{size=\LARGE}
+\setbeamerfont{section title}{family=\Medium,size=\LARGE}
 % Content
-\setbeamerfont{frametitle}{family=\Light,size=\large}
-\setbeamerfont{copyright text}{family=\Light,size=\tiny}
-\setbeamerfont{block title}{family=\Book,size=\large}
-\setbeamerfont{block title alerted}{family=\Book,size=\large}
+\setbeamerfont{frametitle}{family=\Medium,size=\large}
+\setbeamerfont{copyright text}{family=\Regular,size=\tiny}
+\setbeamerfont{block title}{family=\Medium,size=\large}
+\setbeamerfont{block title alerted}{family=\Medium,size=\large}
 \setbeamerfont{alerted text}{family=\Medium}
 % Captions
 \setbeamerfont{caption name}{family=\Book}
@@ -158,54 +137,48 @@
 \def\titlepage{\usebeamertemplate{title page}}
 \setbeamertemplate{title page}
 {
-	% Add background to title page
-	\IfFileExists{background.pdf}{
-		\AddToShipoutPictureFG*{\includegraphics[width=\paperwidth]{background.pdf}}
-	}{}
-	\begin{minipage}[b][\paperheight]{\textwidth}
-	\vspace*{5mm}
-	\IfFileExists{./logo.eps}{
-		\includegraphics[height=14mm]{./logo}\par
-	}{}
-	\vspace*{5mm}
-	\ifx\insertsubtitle\@empty%
-	\else%
-		{\usebeamerfont{title}\usebeamercolor[fg]{title}\MakeUppercase{\inserttitle}\par}%
-	\fi%
-	\ifx\insertsubtitle\@empty%
-	\else%
-		{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-		\vspace*{5mm}
-	\fi%
-	\ifx\insertdate\@empty%
-	\else%
-		{\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
-	\fi% 
-	
-	\vfill
-	
-	\ifx\insertauthor\@empty%
-	\else%
-		{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
-	\fi%
-	\ifx\insertinstitut\@empty%
-	\else%
-		\vspace*{3mm}
-		{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
-	\fi% 
-	\vspace*{5mm}
-	\end{minipage}
+    % Add background to title page
+    \IfFileExists{background.pdf}{
+        \AddToShipoutPictureFG*{\includegraphics[width=\paperwidth]{background.pdf}}
+    }{}
+    \begin{minipage}[b][\paperheight]{\textwidth}
+    \vspace*{5mm}
+    \IfFileExists{logo.eps}{
+        \includegraphics[height=10mm]{logo.eps}\par
+        \vspace*{1mm}
+    }{\vspace*{5mm}}
+    \ifx\insertsubtitle\@empty%
+    \else%
+        {\usebeamerfont{title}\usebeamercolor[fg]{title}\MakeUppercase{\inserttitle}\par}%
+    \fi%
+    \ifx\insertsubtitle\@empty%
+    \else%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+        \vspace*{5mm}
+    \fi%
+    \ifx\insertdate\@empty%
+    \else%
+        {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}%
+    \fi%
+
+    \vfill
+
+    \ifx\insertauthor\@empty%
+    \else%
+        {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}%
+    \fi%
+    \ifx\insertinstitut\@empty%
+    \else%
+        \vspace*{3mm}
+        {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}%
+    \fi%
+    \vspace*{5mm}
+    \end{minipage}
 }
 
 %---------------------------------------------------------------------
 % Sectionpages
 %---------------------------------------------------------------------
-
-% Make Sectionhead uppercase
-\newcommand{\insertsectionHEAD}{%
-	\expandafter\insertsectionHEADaux\insertsectionhead}
-	\newcommand{\insertsectionHEADaux}[3]{\MakeUppercase{#3}
-}
 
 \if@doSectionPage\@empty
 \else
@@ -216,7 +189,7 @@
 \setbeamercolor{background canvas}{bg=annoWarmGreyDark}
 \begin{frame}[plain]
 \centering
-\vfill\usebeamerfont{section title}\textcolor{white}{\insertsectionHEAD}\vfill
+\vfill\usebeamerfont{section title}\textcolor{white}{\insertsectionhead}\vfill
 \end{frame}
 \endgroup
 }
@@ -228,7 +201,7 @@
 \setbeamertemplate{frametitle}
 {
 \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=3ex,dp=1.5ex]{frametitle}
-	 \usebeamerfont{frametitle}\MakeUppercase{\insertframetitle}%
+     \usebeamerfont{frametitle}\insertframetitle%
 \end{beamercolorbox}
 }
 
@@ -238,7 +211,7 @@
 \usenavigationsymbolstemplate{}
 \setbeamertemplate{footline}
 {%
-\begin{beamercolorbox}[wd=\textwidth,ht=3ex,dp=1.5ex,leftskip=0.3cm,rightskip=0.3cm]{structure}%
+\begin{beamercolorbox}[wd=\textwidth,ht=3ex,dp=1em,rightskip=1.3em]{structure}%
 \hfill\usebeamerfont{page number in head/foot}%
 \insertframenumber%
 \end{beamercolorbox}%
@@ -247,54 +220,48 @@
 %---------------------------------------------------------------------
 % Captions
 %---------------------------------------------------------------------
-\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{caption}[numbered]{}
+\setbeamertemplate{caption label separator}{\hspace*{1ex}}
 
 %---------------------------------------------------------------------
 % Blocks
 %---------------------------------------------------------------------
-\setbeamertemplate{block begin}
-{
-  \setbeamercolor{item}{parent=block body}
-  \par\vskip\medskipamount%
-  \begin{beamercolorbox}[sep=.5ex,dp=0.6ex,leftskip=0.5ex,rightskip=0.5ex]{block title}
-    \usebeamerfont*{block title}\insertblocktitle%
-  \end{beamercolorbox}%
-  {\parskip0pt\par}%
-  {\nointerlineskip\vskip-0.5pt}%
-  \usebeamerfont{block body}%
-  \begin{beamercolorbox}[sep=.5ex,dp=0.6ex,leftskip=0.5ex,rightskip=0.5ex,vmode]{block body}%
-}
-\setbeamertemplate{block end}  
-{\end{beamercolorbox}\vskip\smallskipamount}
 
-\setbeamertemplate{block alerted begin}
-{
-  \setbeamercolor{item}{parent=block body alerted}
-  \par\vskip\medskipamount%
-  \begin{beamercolorbox}[sep=.5ex,dp=0.6ex,leftskip=0.5ex,rightskip=0.5ex]{block title alerted}
-    \usebeamerfont*{block title alerted}\insertblocktitle%
-  \end{beamercolorbox}%
-  {\parskip0pt\par}%
-  {\nointerlineskip\vskip-0.5pt}%
-  \usebeamerfont{block body alerted}%
-  \begin{beamercolorbox}[sep=.5ex,dp=0.6ex,leftskip=0.5ex,rightskip=0.5ex,vmode]{block body alerted}%
+\newcommand{\newblocktype}[5]{
+  \setbeamertemplate{#1}
+  {
+    \setbeamercolor{item}{parent=#2}
+    \par\vskip\medskipamount%
+    \begin{beamercolorbox}[sep=1ex,dp=0ex,leftskip=0.5ex,rightskip=0.5ex]{#3}
+        \usebeamerfont*{#3}\insertblocktitle%
+    \end{beamercolorbox}%
+    {\parskip0pt\par}%
+    {\nointerlineskip\vskip-0.5pt}%
+    \usebeamerfont{#4}%
+    \begin{beamercolorbox}[sep=1ex,dp=0ex,leftskip=0.5ex,rightskip=0.5ex,vmode]{#4}%
+  }
+  \setbeamertemplate{#5}
+  {\end{beamercolorbox}\vskip\smallskipamount}
 }
-\setbeamertemplate{block alerted end}
-{\end{beamercolorbox}\vskip\smallskipamount}
 
-\setbeamertemplate{block example begin}
-{
-  \par\vskip\medskipamount%
-  \begin{beamercolorbox}[sep=.5ex,dp=0.6ex,leftskip=0.5ex,rightskip=0.5ex]{block title example}
-    \usebeamerfont*{block title example}\insertblocktitle%
-  \end{beamercolorbox}%
-  {\parskip0pt\par}%
-  {\nointerlineskip\vskip-0.5pt}%
-  \usebeamerfont{block body example}%
-  \begin{beamercolorbox}[sep=.5ex,dp=0.6ex,leftskip=0.5ex,rightskip=0.5ex,vmode]{block body example}%
-}
-\setbeamertemplate{block example end}
-{\end{beamercolorbox}\vskip\smallskipamount}
+\newblocktype{block begin}{block body}{block title}{block body}{block end}
+\newblocktype{block alerted begin}{block body alerted}{block title alerted}{block body alerted}{block alerted end}
+\newblocktype{block example begin}{block body}{block title example}{block body example}{block example end}
+
+%---------------------------------------------------------------------
+% Itemize, Enumerate and Description
+%---------------------------------------------------------------------
+\setbeamertemplate{itemize item}{\rightTextArrow}
+\setbeamertemplate{itemize subitem}{\rightTextArrowTwo}
+\setbeamertemplate{itemize subsubitem}{\rightTextArrowThree}
+
+\setbeamertemplate{enumerate item}{\insertenumlabel} % Don't show dot after number
+\setbeamerfont{enumerate item}{family=\SemiBold}
+\setbeamerfont{enumerate subitem}{family=\SemiBold}
+\setbeamerfont{enumerate subsubitem}{family=\SemiBold}
+
+\setlength{\parskip}{0.5em}
+\setbeamerfont{description item}{family=\SemiBold}
 
 %---------------------------------------------------------------------
 % Images
