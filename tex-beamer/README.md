@@ -1,4 +1,4 @@
-HSRM Beamer Theme (modifiziert, siehe unten)
+[HSRM Beamer Theme](https://github.com/benjamin-weiss/hsrmbeamertheme) (modifiziert, siehe unten)
 =================
 
 Die [Beamer Klassen](http://www.tex.ac.uk/CTAN/macros/latex/contrib/beamer/doc/beameruserguide.pdf) für LaTeX dienen zur Erstellung von Präsentationen, welche mit einem Projektor vorgeführt werden sollen. Das Textsatzsystem erzeugt dazu PDF Dateien, die von einer großen Anzahl an Programmen gezeigt werden können.
