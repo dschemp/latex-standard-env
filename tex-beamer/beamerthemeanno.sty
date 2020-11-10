@@ -127,6 +127,7 @@
 \setbeamerfont{section title}{family=\Medium,size=\LARGE}
 % Content
 \setbeamerfont{frametitle}{family=\Medium,size=\large}
+\setbeamerfont{framesubtitle}{family=\Light,size=\fontsize{8}{10}}
 \setbeamerfont{copyright text}{family=\Regular,size=\tiny}
 \setbeamerfont{block title}{family=\Medium,size=\large}
 \setbeamerfont{block title alerted}{family=\Medium,size=\large}
@@ -207,7 +208,7 @@
 \setbeamertemplate{frametitle}
 {
 \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.3cm,rightskip=0.3cm,ht=3ex,dp=1.5ex]{frametitle}
-     \usebeamerfont{frametitle}\insertframetitle%
+     {\usebeamerfont{frametitle}\insertframetitle}\hfill{\usebeamerfont{framesubtitle}\insertframesubtitle}%
 \end{beamercolorbox}
 }
 
