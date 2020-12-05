@@ -45,6 +45,6 @@ In this case all the LaTeX-related auxilliary files will be removed.
 
 ![Build and push Docker Image to ghcr.io](https://github.com/dschemp/latex-standard-env/workflows/Build%20and%20push%20Docker%20Image%20to%20ghcr.io/badge.svg)
 
-This Docker image is also available as a prebuilt image in the GitHub Container Repository named `ghcr.io/dschemp/docker-latexmk`.
+This Docker image is also available as a prebuilt image in the GitHub Container Repository named `ghcr.io/dschemp/latex-standard-env/docker-latexmk`.
 
 
