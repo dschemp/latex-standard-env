@@ -40,3 +40,11 @@ You can run custom commands like this:
 $ docker run --rm -c /path/to/folder:/data docker-latexmk -C
 ```
 In this case all the LaTeX-related auxilliary files will be removed.
+
+### GitHub Container Repository
+
+![Build and push Docker Image to ghcr.io](https://github.com/dschemp/latex-standard-env/workflows/Build%20and%20push%20Docker%20Image%20to%20ghcr.io/badge.svg)
+
+This Docker image is also available as a prebuilt image in the GitHub Container Repository named `ghcr.io/dschemp/docker-latexmk`.
+
+
