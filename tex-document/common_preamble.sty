@@ -26,10 +26,6 @@
     urlcolor=black!60!cyan
 }
 
-\usepackage{fontawesome}
-\let\orighref\href
-\renewcommand{\href}[2]{\orighref{#1}{#2\,{\scriptsize\faLink}}}
-
 % Checklist
 \newlist{todolist}{itemize}{2}
 \setlist[todolist]{label=$\square$}
@@ -73,6 +69,10 @@
     UprightFont=* Medium,
     BoldFont=* Bold
 ]{Inconsolata}
+
+\usepackage{fontawesome5}
+\let\orighref\href
+\renewcommand{\href}[2]{\orighref{#1}{#2\,{\scriptsize\faLink}}}
 
 % Tables
 \renewcommand\theadalign{bc}
