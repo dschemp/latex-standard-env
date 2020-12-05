@@ -1,5 +1,7 @@
 FROM listx/texlive:2020
 
+LABEL org.opencontainers.image.source https://github.com/dschemp/latex-standard-env
+
 RUN pacman -S --noconfirm wget unzip
 RUN mktexlsr
 
