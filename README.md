@@ -29,7 +29,7 @@ This might take a while so go have a coffee, or two, or five.
 
 To use the image, you will need to map the folder containing the `document.tex` file to `/data`:
 ```
-$ docker run --rm -c /path/to/folder:/data docker-latexmk
+$ docker run --rm -v /path/to/folder:/data docker-latexmk
 ```
 
 By default, the container runs `latexmk -pdfxe` to compile the document with XeLaTeX.
@@ -37,7 +37,7 @@ Depending on your document, you might want to change some parameters or use a di
 
 You can run custom commands like this:
 ```
-$ docker run --rm -c /path/to/folder:/data docker-latexmk -C
+$ docker run --rm -v /path/to/folder:/data docker-latexmk -C
 ```
 In this case all the LaTeX-related auxilliary files will be removed.
 
