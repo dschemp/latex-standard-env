@@ -120,3 +120,18 @@
     output-decimal-marker = {,},
     per-mode = symbol,
 }
+
+% optional title page
+\newcommand{\maketitleBackgroundPath}{title-page.jpg}
+\let\origmaketitle\maketitle
+\renewcommand{\maketitle}{
+    \origmaketitle
+
+    \IfFileExists{\maketitleBackgroundPath} {
+        \thispagestyle{empty}
+        \tikz[remember picture,overlay] 
+            \node[opacity=0.5,outer sep=0pt,inner sep=0pt, scope fading=north]
+                at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{\maketitleBackgroundPath}};
+        \clearpage
+    }{}
+}
