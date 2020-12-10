@@ -108,3 +108,6 @@
 % replace underline
 \usepackage{ulem}
 \renewcommand{\ULdepth}{1.8pt}
+\let\origunderline\underline
+\renewcommand{\underline}[1]{\uline{#1}}
+
