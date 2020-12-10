@@ -36,13 +36,16 @@
 \hspace{-2.5pt}}
 \newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 
-% Font
+% use unicode-math
 \usepackage{unicode-math}
+% font fixes
 \usepackage{microtype}
 
+% quotes (") will be transformed into german style
 \usepackage{csquotes}
-\MakeOuterQuote{"} % german style quotes
+\MakeOuterQuote{"}
 
+% setup fonts
 \usepackage{fontspec}
 \setmainfont[
     Ligatures=TeX,
@@ -70,8 +73,10 @@
     BoldFont=* Bold
 ]{Inconsolata}
 
+% enable Font Awesome 5
 \usepackage{fontawesome5}
 \let\orighref\href
+% \href now colors the link text and adds the Font Awesome Link symbol at the end
 \renewcommand{\href}[2]{\orighref{#1}{#2\,{\scriptsize\faLink}}}
 
 % Tables
@@ -92,4 +97,5 @@
     \renewcommand{\footrulewidth}{.5pt}
 }
 
-\setlength{\parindent}{0cm}
+% don't indent paragraphs
+\usepackage{parskip}
