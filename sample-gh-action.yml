@@ -1,0 +1,45 @@
+# This workflow might not work out of the box after configuring the parameters.
+
+# What your workflow should be called
+name: EDIT THIS PART
+
+# Edit these parameters
+env:
+  FOLDER_PATH: path/to/folder/from/repo/root # set this to . to use the repositories root
+  PDF_FILE: document.pdf
+
+on:
+  push:
+    branches: [ main ]
+# In case you have multiple documents per repository, uncomment and change this parameter to only activate workflow for pushes with changes in a specified folder 
+#    paths:
+#    - 'path/to/folder/from/repo/root/**'
+
+# Uncomment this to enable manual workflow trigger
+#  workflow_dispatch:
+
+# Only change anything in case you want to add any steps or e. g. edit the nextcloud export
+# ----------------------------------------------------------------------------------
+#
+
+jobs:
+  create-and-upload-document:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Build document
+        run: docker run --rm -v $GITHUB_WORKSPACE/$FOLDER_PATH:/data ghcr.io/dschemp/latex-standard-env/docker-latexmk:latest
+      
+      - name: Export artefact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Document
+          path: ./${{ env.FOLDER_NAME }}/${{ env.PDF_FILE }}
+      
+#      - name: Export to Nextcloud
+#        working-directory: ./${{ env.FOLDER_NAME }}
+#        run: |
+#           curl -T "${{ PDF_FILE }}" \
+#           -u "${{ secrets.NC_USERNAME }}:${{ secrets.NC_PASSWORD }}" \
+#           "https://${{ secrets.NC_HOST }}/remote.php/dav/files/${{ secrets.NC_USERNAME }}/Document-${{ github.workflow }}-${{ github.run_number }}.pdf"
