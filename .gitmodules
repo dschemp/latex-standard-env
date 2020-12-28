@@ -1,3 +1,6 @@
 [submodule "fonts/barlow"]
 	path = fonts/barlow
 	url = https://github.com/jpt/barlow.git
+[submodule "fonts/sofia-sans"]
+	path = fonts/sofia-sans
+	url = https://github.com/lettersoup/Sofia-Sans.git

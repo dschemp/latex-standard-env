@@ -1,0 +1,99 @@
+% Standard packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{empheq}
+\usepackage{xcolor}
+\usepackage[ngerman]{babel} % German language pack
+\usepackage{float}
+\usepackage[top=2cm,bottom=3.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{tikz}
+
+% Tables
+\usepackage{makecell}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+
+% Graphics
+\usepackage{graphicx}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black!60!cyan
+}
+
+% use unicode-math
+\usepackage{unicode-math}
+% font fixes
+\usepackage{microtype}
+
+% quotes (") will be transformed into german style
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+
+% setup fonts
+\usepackage{fontspec}
+\setmainfont[
+    Ligatures=TeX,
+    UprightFont=*,
+    ItalicFont=* Italic,
+    BoldFont=* Bold,
+    BoldItalicFont=* Bold Italic
+]{Sofia Sans}
+
+\setsansfont[
+    Ligatures=TeX,
+    UprightFont=*,
+    ItalicFont=* Italic,
+    BoldFont=* Bold
+]{Sofia Sans}
+
+\setmonofont[
+    Ligatures=TeX,
+    UprightFont=* Medium,
+    BoldFont=* Bold
+]{Inconsolata}
+
+% enable Font Awesome 5
+\usepackage{fontawesome5}
+\let\orighref\href
+% \href now colors the link text and adds the Font Awesome Link symbol at the end
+\renewcommand{\href}[2]{\orighref{#1}{#2\,{\scriptsize\faLink}}}
+
+% Header & Footer
+\usepackage{fancyhdr}
+\usepackage{nopageno}
+\fancypagestyle{fancyplain}{
+    \fancyhf{}
+    \fancyfoot[R]{\thepage}
+}
+
+% don't indent paragraphs
+\usepackage{parskip}
+
+% horizontal rule
+\newcommand\hr{
+    \noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+% replace underline
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\let\origunderline\underline
+\renewcommand{\underline}[1]{\uline{#1}}
+
+% enable use of Material Design colors
+\usepackage{xcolor-material}
+
+% SI units
+\usepackage{siunitx}
+\sisetup{
+    output-decimal-marker = {,},
+    per-mode = symbol,
+}

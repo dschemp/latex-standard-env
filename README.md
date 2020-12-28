@@ -47,4 +47,6 @@ In this case all the LaTeX-related auxilliary files will be removed.
 
 This Docker image is also available as a prebuilt image in the GitHub Container Repository named `ghcr.io/dschemp/latex-standard-env/docker-latexmk`.
 
-
+```
+$ docker run --rm -v /path/to/folder:/data ghcr.io/dschemp/latex-standard-env/docker-latexmk
+```
