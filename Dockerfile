@@ -66,6 +66,9 @@ RUN mv ssp /usr/share/fonts/source-sans-pro
 
 FROM archlinux/archlinux
 
+LABEL maintainer="Daniel Schemp <git@shmp.systems>"
+LABEL org.opencontainers.image.source https://github.com/dschemp/latex-standard-env
+
 RUN \
 	# Sync package databases.
 	pacman -Syw \
@@ -80,21 +83,16 @@ RUN \
 	# Clear pacman cache.
 	&& pacman -Scc --noconfirm
 
-# We have to manually edit PATH so that the "biber" binary is readily available
-# to us. Although biber itself is found only in /usr/bin/vendor_perl, we include
-# other Perl-based paths for the sake of completeness. [1]
-ENV PATH="/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:${PATH}"
-
-USER root
-
-LABEL maintainer="Daniel Schemp <git@shmp.systems>"
-LABEL org.opencontainers.image.source https://github.com/dschemp/latex-standard-env
-
 ##
 # Install Perl modules necessary for latexindent
 ##
 COPY --from=PERL_BUILDER /home/builder/perl-log-dispatch/perl-log-dispatch-2.70-1-any.pkg.tar.zst /tmp/perl-log-dispatch.pkg.tar.zst
 RUN pacman -U /tmp/perl-log-dispatch.pkg.tar.zst --noconfirm
+
+# We have to manually edit PATH so that the "biber" binary is readily available
+# to us. Although biber itself is found only in /usr/bin/vendor_perl, we include
+# other Perl-based paths for the sake of completeness. [1]
+ENV PATH="/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:${PATH}"
 
 ##
 # Fixes an error
