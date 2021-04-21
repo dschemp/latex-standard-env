@@ -25,14 +25,12 @@ RUN curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/perl-log-dispatch.ta
 
 # --------------------- Font packages ---------------------
 
-FROM archlinux/archlinux AS FONTS
-
-RUN pacman -Syw
+FROM alpine AS FONTS
 
 ##
 # Install necessary tools
 ##
-RUN pacman -S --noconfirm \
+RUN apk add --no-cache \
         wget \
         unzip \
         git
