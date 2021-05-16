@@ -65,6 +65,7 @@ RUN mv ssp /usr/share/fonts/source-sans-pro
 # --------------------- LaTeX Image ---------------------
 
 FROM archlinux/archlinux
+# i use arch btw OwO
 
 ##
 # Image Metadata
