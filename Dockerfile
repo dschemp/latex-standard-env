@@ -66,6 +66,9 @@ RUN mv ssp /usr/share/fonts/source-sans-pro
 
 FROM archlinux/archlinux
 
+##
+# Image Metadata
+##
 LABEL maintainer="Daniel Schemp <git@shmp.systems>"
 LABEL org.opencontainers.image.source https://github.com/dschemp/latex-standard-env
 
