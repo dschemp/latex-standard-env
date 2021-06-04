@@ -18,14 +18,17 @@
 % Graphics
 \usepackage{graphicx}
 
+% Colors
+\definecolor{spotBlue}{RGB}{0,100,138}
+
 % Hyperlinks
 \usepackage[pdfusetitle]{hyperref}
 \hypersetup{
     colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black!60!cyan
+    citecolor=spotBlue,
+    filecolor=spotBlue,
+    linkcolor=spotBlue,
+    urlcolor=spotBlue
 }
 
 % use unicode-math
@@ -53,6 +56,11 @@
     BoldFont=* Bold
 ]{Sofia Sans}
 
+\setmathfont[
+    Ligatures=TeX,
+    AutoFakeBold
+]{Libertinus Math}
+
 \setmonofont[
     Ligatures=TeX,
     UprightFont=* Medium,
@@ -66,11 +74,14 @@
 \renewcommand{\href}[2]{\orighref{#1}{#2\,{\scriptsize\faLink}}}
 
 % Header & Footer
-\usepackage{fancyhdr}
-\usepackage{nopageno}
-\fancypagestyle{fancyplain}{
-    \fancyhf{}
-    \fancyfoot[R]{\thepage}
+\usepackage{scrlayer-scrpage}
+\newpairofpagestyles{custom}{
+    \clearpairofpagestyles
+    \ofoot*{\pagemark}
+}
+
+\newpairofpagestyles{custom-empty}{
+    \clearpairofpagestyles
 }
 
 % don't indent paragraphs
@@ -86,9 +97,6 @@
 \renewcommand{\ULdepth}{1.8pt}
 \let\origunderline\underline
 \renewcommand{\underline}[1]{\uline{#1}}
-
-% enable use of Material Design colors
-\usepackage{xcolor-material}
 
 % SI units
 \usepackage{siunitx}

@@ -18,14 +18,17 @@
 % Graphics
 \usepackage{graphicx}
 
+% Colors
+\definecolor{spotBlue}{RGB}{0,100,138}
+
 % Hyperlinks
 \usepackage[pdfusetitle]{hyperref}
 \hypersetup{
     colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black!60!cyan
+    citecolor=spotBlue,
+    filecolor=spotBlue,
+    linkcolor=spotBlue,
+    urlcolor=spotBlue
 }
 
 % Checklist
@@ -88,6 +91,7 @@
 \renewcommand\cellgape{\Gape[4pt]}
 
 % Header & Footer
+% TODO: change to scrlayer-scrpage package
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{
     \fancyhf{}
@@ -112,9 +116,6 @@
 \renewcommand{\ULdepth}{1.8pt}
 \let\origunderline\underline
 \renewcommand{\underline}[1]{\uline{#1}}
-
-% enable use of Material Design colors
-\usepackage{xcolor-material}
 
 % SI units
 \usepackage{siunitx}
