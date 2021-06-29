@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v2
         
       - name: Build document
-        run: docker run --rm -v $GITHUB_WORKSPACE/$FOLDER_PATH:/data ghcr.io/dschemp/latex-standard-env/docker-latexmk:latest
+        run: docker run --rm -v $GITHUB_WORKSPACE/$FOLDER_PATH:/data ghcr.io/dschemp/latexmk:latest
       
       - name: Export artefact
         uses: actions/upload-artifact@v2
