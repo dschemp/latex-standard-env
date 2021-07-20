@@ -1,0 +1,6 @@
+{
+  "image": "ghcr.io/dschemp/latexmk",
+  "extensions": [
+    "james-yu.latex-workshop"
+  ]
+}

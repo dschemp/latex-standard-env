@@ -1,4 +1,4 @@
-# All needed and used fonts if not through CTAN packages
+# All needed and used fonts if not provided through CTAN packages
 
 ### Currently used:
 - [Libertinus](https://github.com/alerque/libertinus) (tex-documentation)

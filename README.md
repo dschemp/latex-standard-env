@@ -9,8 +9,7 @@ git clone --recursive https://github.com/dschemp/latex-standard-env.git
 
 ## Use this template
 ### Installation
-Go into the fonts folder to see what fonts need to be installed in order to
-compile a certain type of template.
+Goto `FONTS.md` to see what fonts need to be installed in order to compile the types of templates.
 
 ### Usage
 Just start typing in the `document.tex` and compile.
@@ -50,3 +49,22 @@ This Docker image is also available as a prebuilt image in the GitHub Container 
 ```
 $ docker run --rm -v /path/to/folder:/data ghcr.io/dschemp/latexmk
 ```
+
+## Using the Visual Studio Code Development Container
+
+_This feature requires you to have Docker installed._
+
+The development container uses my Docker image `ghcr.io/dschemp/latexmk`.
+
+You will need the `.devcontainer` folder in the root of your workspace.
+Then you can (re)open your folder with `Ctrl+P` and `>Remote-Containers: Reopen in Container`.
+
+As of right now this is not the best solution as saving in the document does _not_ rebuild the PDF nor does rebuilding
+update the included PDF viewer tab.
+
+And it does not utilize installed fonts on the "host" system.
+Fonts needed for the compilation need to be installed it not already included in the Docker image.
+
+## Support for Podman
+
+> Dunno ... give it a try.
