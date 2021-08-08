@@ -36,31 +36,36 @@ RUN apk add --no-cache \
         git
 
 WORKDIR /tmp/fonts
-RUN mkdir -p /usr/share/fonts
+RUN mkdir -p /usr/share/fonts && \
 
-# Libertinus Serif + Sans + Mono + Keyboard
-RUN wget https://github.com/alerque/libertinus/releases/download/v7.040/Libertinus-7.040.zip -O libertinus.zip
-RUN unzip libertinus.zip -d libertinus
-RUN mv libertinus/Libertinus-7.040/static/OTF /usr/share/fonts/libertinus
+	# Libertinus Serif + Sans + Mono + Keyboard
+	wget https://github.com/alerque/libertinus/releases/download/v7.040/Libertinus-7.040.zip -O libertinus.zip && \
+	unzip libertinus.zip -d libertinus && \
+	mv libertinus/Libertinus-7.040/static/OTF /usr/share/fonts/libertinus && \
 
-# Barlow
-RUN wget https://github.com/jpt/barlow/archive/1.422.zip -O barlow.zip
-RUN unzip barlow.zip -d barlow
-RUN mv barlow/barlow-1.422/fonts/otf /usr/share/fonts/barlow
+	# Barlow
+	wget https://github.com/jpt/barlow/archive/1.422.zip -O barlow.zip && \
+	unzip barlow.zip -d barlow && \
+	mv barlow/barlow-1.422/fonts/otf /usr/share/fonts/barlow && \
 
-# Inconsolata
-RUN wget https://github.com/googlefonts/Inconsolata/releases/download/v3.000/fonts_otf.zip -O inconsolata.zip
-RUN unzip inconsolata.zip -d inconsolata
-RUN mv inconsolata/fonts/otf /usr/share/fonts/inconsolata
+	# Inconsolata
+	wget https://github.com/googlefonts/Inconsolata/releases/download/v3.000/fonts_otf.zip -O inconsolata.zip && \
+	unzip inconsolata.zip -d inconsolata && \
+	mv inconsolata/fonts/otf /usr/share/fonts/inconsolata && \
 
-# Sofia Sans
-RUN git clone https://github.com/lettersoup/Sofia-Sans.git sofia-sans
-RUN mv sofia-sans/fonts/otf /usr/share/fonts/sofia-sans
+	# Sofia Sans
+	git clone https://github.com/lettersoup/Sofia-Sans.git sofia-sans && \
+	mv sofia-sans/fonts/otf /usr/share/fonts/sofia-sans && \
 
-# Source Sans Pro
-RUN wget https://fonts.google.com/download?family=Source%20Sans%20Pro -O ssp.zip
-RUN unzip ssp.zip -d ssp
-RUN mv ssp /usr/share/fonts/source-sans-pro
+	# Source Sans Pro
+	wget https://fonts.google.com/download?family=Source%20Sans%20Pro -O source-sans-pro.zip && \
+	unzip source-sans-pro.zip -d source-sans-pro && \
+	mv source-sans-pro /usr/share/fonts/source-sans-pro && \
+
+	# Source Serif Pro
+	wget https://fonts.google.com/download?family=Source%20Serif%20Pro -O source-serif-pro.zip && \
+	unzip source-serif-pro.zip -d source-serif-pro && \
+	mv source-serif-pro /usr/share/fonts/source-serif-pro
 
 # --------------------- LaTeX Image ---------------------
 
